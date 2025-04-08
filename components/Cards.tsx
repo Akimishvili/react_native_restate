@@ -19,7 +19,7 @@ export const FeaturedCard = ({ item: {image, rating, name, address, price}, onPr
                 <Text className="text-xs font-rubik-bold text-primary-300 ml-1">{ rating }</Text>
             </View>
 
-            <View className="flex flex-col items-start absolute bottom-5 inset-x-5">
+            <View className="flex flex-col items-start absolute bottom-5 inset-x-5 gap-3">
                 <Text className="text-xl font-rubik-extrabold text-white" numberOfLines={1}>{name}</Text>
                 <Text className="text-base font-rubik text-white">{address}</Text>
 
@@ -48,11 +48,46 @@ export const Card = ({ item: {image, rating, name, address, price}, onPress}: Pr
                 <Text className="text-xs font-rubik text-black-200">{address}</Text>
             </View>
 
-            <View className="flex flex-row items-center justify-between mt-2">
+            <View className="flex flex-row items-center justify-between mt-3">
                 <Text className="font-base font-rubik-bold text-primary-300">${price}</Text>
 
                 <Image source={icons.heart} className="w-5 h-5 mr-2" tintColor="#191d31" />
             </View>
         </TouchableOpacity>
+    )
+}
+
+export const ExploreCard = ({ item: {image, rating, name, address, price}, onPress}: Props) => {
+    return (
+        <TouchableOpacity
+            onPress={onPress}
+            className="flex w-full mt-4 px-3 py-4 rounded-lg bg-white shadow-lg shadow-black-100/70"
+        >
+            <View className="absolute top-5 right-2 z-50 bg-white/90 px-2 p-1 rounded-full flex-row items-center border border-black/10">
+                <Image source={icons.star} className="size-2.5" />
+                <Text className="text-xs font-rubik-bold text-primary-300 ml-0.5">{rating}</Text>
+            </View>
+
+            <View className="flex-row w-full">
+                <Image source={{ uri: image }} className="w-32 h-32 rounded-lg relative" />
+
+                <View className="flex-1 flex justify-between ml-3 py-1">
+                    <View>
+                        <Text className="text-base font-rubik-bold text-black-300" numberOfLines={1}>
+                            {name}
+                        </Text>
+                        <Text className="text-xs font-rubik text-black-200">
+                            {address}
+                        </Text>
+                    </View>
+
+                    <View className="flex-row items-center justify-between mt-2">
+                        <Text className="font-base font-rubik-bold text-primary-300">${price}</Text>
+                        <Image source={icons.heart} className="w-5 h-5" tintColor="#191d31" />
+                    </View>
+                </View>
+            </View>
+        </TouchableOpacity>
+
     )
 }

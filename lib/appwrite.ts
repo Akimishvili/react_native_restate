@@ -132,3 +132,4 @@ export async function getProperties({ filter, query, limit}: {
         return [];
     }
 }
+
